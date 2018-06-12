@@ -1,5 +1,7 @@
 # React LongPressable
 
+[![npm](https://img.shields.io/npm/v/react-longpressable.svg)](https://www.npmjs.com/package/react-longpressable)
+
 Long-press wrapper for React that uses pointer events. Supports
 normal clicks as well.
 
