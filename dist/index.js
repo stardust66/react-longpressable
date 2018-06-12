@@ -49,7 +49,7 @@ var LongPressable = function (_React$PureComponent) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LongPressable.__proto__ || Object.getPrototypeOf(LongPressable)).call.apply(_ref, [this].concat(args))), _this), _this.isLongPressing = false, _this.startingPosition = { x: 0, y: 0 }, _this.onPointerUp = function (e) {
       if (_this.timerID) {
-        _this.clearLongPressTimer();
+        _this.cancelLongPress();
       }
 
       var mousePosition = eventToPosition(e);
@@ -75,18 +75,18 @@ var LongPressable = function (_React$PureComponent) {
     }, _this.onPointerMove = function (e) {
       var mousePosition = eventToPosition(e);
       if (_this.timerID && _this.exceedDragThreshold(mousePosition)) {
-        _this.clearLongPressTimer();
+        _this.cancelLongPress();
       }
     }, _this.onPointerLeave = function () {
       if (_this.timerID) {
-        _this.clearLongPressTimer();
+        _this.cancelLongPress();
       }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(LongPressable, [{
-    key: 'clearLongPressTimer',
-    value: function clearLongPressTimer() {
+    key: 'cancelLongPress',
+    value: function cancelLongPress() {
       clearTimeout(this.timerID);
       this.timerID = null;
     }

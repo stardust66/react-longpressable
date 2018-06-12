@@ -38,7 +38,7 @@ export default class LongPressable extends React.PureComponent {
 
   onPointerUp = (e) => {
     if (this.timerID) {
-      this.clearLongPressTimer()
+      this.cancelLongPress()
     }
 
     const mousePosition = eventToPosition(e)
@@ -70,17 +70,17 @@ export default class LongPressable extends React.PureComponent {
   onPointerMove = (e) => {
     const mousePosition = eventToPosition(e)
     if (this.timerID && this.exceedDragThreshold(mousePosition)) {
-      this.clearLongPressTimer()
+      this.cancelLongPress()
     }
   }
 
   onPointerLeave = () => {
     if (this.timerID) {
-      this.clearLongPressTimer()
+      this.cancelLongPress()
     }
   }
 
-  clearLongPressTimer() {
+  cancelLongPress() {
     clearTimeout(this.timerID)
     this.timerID = null
   }
