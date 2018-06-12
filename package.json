@@ -1,0 +1,38 @@
+{
+  "name": "react-longpressable",
+  "version": "1.0.0",
+  "description": "Long-press component for React that uses pointer events.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "test": "jest",
+    "prepublishOnly": "npm test",
+    "prepare": "npm run build"
+  },
+  "author": {
+    "name": "Jason Chen",
+    "email": "kbtpodifo@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stardust66/react-longpressable.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^23.0.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^23.1.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0"
+  }
+}
