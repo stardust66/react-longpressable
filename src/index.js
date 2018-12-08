@@ -24,13 +24,15 @@ export default class LongPressable extends React.PureComponent {
     // Maximum distance (pixels) user is allowed to drag before
     // click is canceled
     dragThreshold: PropType.number,
+    disabled: PropType.bool,
     children: PropType.node
   }
 
   static defaultProps = {
     longPressTime: 500,
     primaryMouseButtonOnly: true,
-    dragThreshold: 100
+    dragThreshold: 100,
+    disabled: false
   }
 
   isLongPressing = false
@@ -90,12 +92,14 @@ export default class LongPressable extends React.PureComponent {
   }
 
   render() {
+    var disabled = this.props.disabled;
+
     return (
       <div
-        onPointerUp={this.onPointerUp}
-        onPointerDown={this.onPointerDown}
-        onPointerMove={this.onPointerMove}
-        onPointerLeave={this.onPointerLeave}
+        onPointerUp={disabled ? null : this.onPointerUp}
+        onPointerDown={disabled ? null : this.onPointerDown}
+        onPointerMove={disabled ? null : this.onPointerMove}
+        onPointerLeave={disabled ? null : this.onPointerLeave}
       >
         {this.props.children}
       </div>
