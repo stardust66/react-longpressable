@@ -47,7 +47,7 @@ export default class LongPressable extends React.PureComponent {
 
     if (!this.isLongPressing &&
         !this.exceedDragThreshold(mousePosition)) {
-      this.props.onShortPress()
+      this.props.onShortPress && this.props.onShortPress()
     }
     else {
       this.isLongPressing = false
@@ -60,12 +60,12 @@ export default class LongPressable extends React.PureComponent {
         return
       }
     }
-
+  
     this.startingPosition = eventToPosition(e)
 
     this.timerID = setTimeout(() => {
       this.isLongPressing = true
-      this.props.onLongPress()
+      this.props.onLongPress && this.props.onLongPress()
     }, this.props.longPressTime)
   }
 
@@ -96,6 +96,7 @@ export default class LongPressable extends React.PureComponent {
 
     return (
       <div
+        onContextMenu={e => e.preventDefault()}
         onPointerUp={disabled ? null : this.onPointerUp}
         onPointerDown={disabled ? null : this.onPointerDown}
         onPointerMove={disabled ? null : this.onPointerMove}

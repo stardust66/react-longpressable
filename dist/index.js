@@ -55,7 +55,7 @@ var LongPressable = function (_React$PureComponent) {
       var mousePosition = eventToPosition(e);
 
       if (!_this.isLongPressing && !_this.exceedDragThreshold(mousePosition)) {
-        _this.props.onShortPress();
+        _this.props.onShortPress && _this.props.onShortPress();
       } else {
         _this.isLongPressing = false;
       }
@@ -98,13 +98,18 @@ var LongPressable = function (_React$PureComponent) {
   }, {
     key: 'render',
     value: function render() {
+      var disabled = this.props.disabled;
+
       return _react2.default.createElement(
         'div',
         {
-          onPointerUp: this.onPointerUp,
-          onPointerDown: this.onPointerDown,
-          onPointerMove: this.onPointerMove,
-          onPointerLeave: this.onPointerLeave
+          onContextMenu: function onContextMenu(e) {
+            return e.preventDefault();
+          },
+          onPointerUp: disabled ? null : this.onPointerUp,
+          onPointerDown: disabled ? null : this.onPointerDown,
+          onPointerMove: disabled ? null : this.onPointerMove,
+          onPointerLeave: disabled ? null : this.onPointerLeave
         },
         this.props.children
       );
@@ -122,11 +127,13 @@ LongPressable.propTypes = {
   // Maximum distance (pixels) user is allowed to drag before
   // click is canceled
   dragThreshold: _propTypes2.default.number,
+  disabled: _propTypes2.default.bool,
   children: _propTypes2.default.node
 };
 LongPressable.defaultProps = {
   longPressTime: 500,
   primaryMouseButtonOnly: true,
-  dragThreshold: 100
+  dragThreshold: 100,
+  disabled: false
 };
 exports.default = LongPressable;
