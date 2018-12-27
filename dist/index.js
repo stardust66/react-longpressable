@@ -106,7 +106,7 @@ var LongPressable = function (_React$PureComponent) {
         'div',
         {
           onContextMenu: function onContextMenu(e) {
-            return e.preventDefault();
+            e.preventDefault();e.stopPropagation();
           },
           onClick: disabled ? this.cancelEvent : null,
           onPointerUp: disabled ? null : this.onPointerUp,

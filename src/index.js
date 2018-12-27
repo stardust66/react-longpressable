@@ -100,7 +100,7 @@ export default class LongPressable extends React.PureComponent {
 
     return (
       <div
-        onContextMenu={e => e.preventDefault()}
+        onContextMenu={e => { e.preventDefault(); e.stopPropagation(); }}
         onClick={disabled ? this.cancelEvent : null}
         onPointerUp={disabled ? null : this.onPointerUp}
         onPointerDown={disabled ? null : this.onPointerDown}
