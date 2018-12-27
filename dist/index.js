@@ -47,7 +47,9 @@ var LongPressable = function (_React$PureComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LongPressable.__proto__ || Object.getPrototypeOf(LongPressable)).call.apply(_ref, [this].concat(args))), _this), _this.isLongPressing = false, _this.startingPosition = { x: 0, y: 0 }, _this.onPointerUp = function (e) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LongPressable.__proto__ || Object.getPrototypeOf(LongPressable)).call.apply(_ref, [this].concat(args))), _this), _this.isLongPressing = false, _this.startingPosition = { x: 0, y: 0 }, _this.cancelEvent = function (e) {
+      e.stopPropagation();
+    }, _this.onPointerUp = function (e) {
       if (_this.timerID) {
         _this.cancelLongPress();
       }
@@ -106,6 +108,7 @@ var LongPressable = function (_React$PureComponent) {
           onContextMenu: function onContextMenu(e) {
             return e.preventDefault();
           },
+          onClick: disabled ? this.cancelEvent : null,
           onPointerUp: disabled ? null : this.onPointerUp,
           onPointerDown: disabled ? null : this.onPointerDown,
           onPointerMove: disabled ? null : this.onPointerMove,

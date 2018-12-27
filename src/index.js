@@ -38,6 +38,10 @@ export default class LongPressable extends React.PureComponent {
   isLongPressing = false
   startingPosition = { x: 0, y: 0 }
 
+  cancelEvent = (e) => {
+    e.stopPropagation();
+  }
+
   onPointerUp = (e) => {
     if (this.timerID) {
       this.cancelLongPress()
@@ -97,6 +101,7 @@ export default class LongPressable extends React.PureComponent {
     return (
       <div
         onContextMenu={e => e.preventDefault()}
+        onClick={disabled ? this.cancelEvent : null}
         onPointerUp={disabled ? null : this.onPointerUp}
         onPointerDown={disabled ? null : this.onPointerDown}
         onPointerMove={disabled ? null : this.onPointerMove}
