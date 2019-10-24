@@ -47,7 +47,12 @@ var LongPressable = function (_React$PureComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LongPressable.__proto__ || Object.getPrototypeOf(LongPressable)).call.apply(_ref, [this].concat(args))), _this), _this.isLongPressing = false, _this.startingPosition = { x: 0, y: 0 }, _this.onPointerUp = function (e) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LongPressable.__proto__ || Object.getPrototypeOf(LongPressable)).call.apply(_ref, [this].concat(args))), _this), _this.isLongPressing = false, _this.startingPosition = { x: 0, y: 0 }, _this.clearTimeout = function () {
+      if (_this.timerID) {
+        clearTimeout(_this.timerID);
+        _this.timerID = null;
+      }
+    }, _this.onPointerUp = function (e) {
       if (_this.timerID) {
         _this.cancelLongPress();
       }
@@ -85,10 +90,14 @@ var LongPressable = function (_React$PureComponent) {
   }
 
   _createClass(LongPressable, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.clearTimeout();
+    }
+  }, {
     key: 'cancelLongPress',
     value: function cancelLongPress() {
-      clearTimeout(this.timerID);
-      this.timerID = null;
+      this.clearTimeout();
     }
   }, {
     key: 'exceedDragThreshold',
