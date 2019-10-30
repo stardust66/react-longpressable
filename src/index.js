@@ -36,6 +36,17 @@ export default class LongPressable extends React.PureComponent {
   isLongPressing = false
   startingPosition = { x: 0, y: 0 }
 
+  componentWillUnmount() {
+    this.clearTimeout()
+  }
+
+  clearTimeout = () => {
+    if (this.timerID) {
+      clearTimeout(this.timerID)
+      this.timerID = null
+    }
+  }
+
   onPointerUp = (e) => {
     if (this.timerID) {
       this.cancelLongPress()
@@ -81,8 +92,7 @@ export default class LongPressable extends React.PureComponent {
   }
 
   cancelLongPress() {
-    clearTimeout(this.timerID)
-    this.timerID = null
+    this.clearTimeout()
   }
 
   exceedDragThreshold(point) {
