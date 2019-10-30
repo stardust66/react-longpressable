@@ -1,6 +1,6 @@
 {
   "name": "react-longpressable",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Long-press component for React that uses pointer events.",
   "main": "dist/index.js",
   "scripts": {
