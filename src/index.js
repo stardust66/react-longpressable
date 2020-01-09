@@ -56,7 +56,7 @@ export default class LongPressable extends React.PureComponent {
 
     if (!this.isLongPressing &&
         !this.exceedDragThreshold(mousePosition)) {
-      this.props.onShortPress()
+      this.props.onShortPress(e)
     }
     else {
       this.isLongPressing = false
