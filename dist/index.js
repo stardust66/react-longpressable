@@ -60,7 +60,7 @@ var LongPressable = function (_React$PureComponent) {
       var mousePosition = eventToPosition(e);
 
       if (!_this.isLongPressing && !_this.exceedDragThreshold(mousePosition)) {
-        _this.props.onShortPress();
+        _this.props.onShortPress(e);
       } else {
         _this.isLongPressing = false;
       }
