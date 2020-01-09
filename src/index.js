@@ -74,7 +74,7 @@ export default class LongPressable extends React.PureComponent {
 
     this.timerID = setTimeout(() => {
       this.isLongPressing = true
-      this.props.onLongPress()
+      this.props.onLongPress(e)
     }, this.props.longPressTime)
   }
 
