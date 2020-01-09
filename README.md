@@ -15,8 +15,8 @@ npm install --save react-longpressable
 ```
 
 ## Props
-- onShortPress (function): callback for normal clicks.
-- onLongPress (function): callback for long presses.
+- onShortPress(event) (function): callback for normal clicks.
+- onLongPress(event) (function): callback for long presses.
 - longPressTime (number, default 500): duration of a long press in
 milliseconds.
 - dragThreshold (number, default 5): distance in pixels that the mouse is
@@ -31,11 +31,11 @@ import LongPressable from 'react-longpressable';
 
 export default class Example extends React.PureComponent {
 
-  onLongPress = () => {
+  onLongPress = (e) => {
     console.log('Long pressed.');
   }
 
-  onShortPress = () => {
+  onShortPress = (e) => {
     console.log('Short pressed.');
   }
 

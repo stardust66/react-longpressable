@@ -75,7 +75,7 @@ var LongPressable = function (_React$PureComponent) {
 
       _this.timerID = setTimeout(function () {
         _this.isLongPressing = true;
-        _this.props.onLongPress();
+        _this.props.onLongPress(e);
       }, _this.props.longPressTime);
     }, _this.onPointerMove = function (e) {
       var mousePosition = eventToPosition(e);
